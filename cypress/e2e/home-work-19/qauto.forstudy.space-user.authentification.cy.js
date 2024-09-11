@@ -1,4 +1,6 @@
 ///  <reference types="cypress" />;
+// import "./commands";
+require("./commands");
 
 describe("Registration set", () => {
   beforeEach(() => {
@@ -231,34 +233,11 @@ describe("Login set", () => {
     });
   });
   it("Valid login", () => {
-    cy.get("button.header_signin").click();
-    cy.get("h4").should("include.text", "Log in");
-    cy.get("#signinEmail").type("komrakova.anna@gmail.com");
-    cy.get("#signinPassword").type("GmmWseR6**", { sensitive: true });
-    cy.get("button").contains("Login").click();
+    cy.login("komrakova.anna@gmail.com", "GmmWseR6**");
     cy.get("h1").should("include.text", "Garage");
   });
   it("Invalid login", () => {
-    cy.get("button.header_signin").click();
-    cy.get("h4").should("include.text", "Log in");
-    cy.get("#signinEmail").type("komrakova.anna+101@gmail.com");
-    cy.get("#signinPassword").type("GmmWseR6**", { sensitive: true });
-    cy.get("button").contains("Login").click();
+    cy.login("komrakova.anna+101@gmail.com", "GmmWseR6**");
     cy.get("p.alert").should("include.text", "Wrong email or password");
   });
 });
-Cypress.Commands.overwrite(
-  "type",
-  (originalFn, element, text, options = {}) => {
-    if (options.sensitive) {
-      options.log = false;
-
-      Cypress.log({
-        $el: element,
-        name: "type",
-        message: "*".repeat(text.length),
-      });
-    }
-    return originalFn(element, text, options);
-  }
-);
