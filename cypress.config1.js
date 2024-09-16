@@ -3,7 +3,7 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   e2e: {
     chromeWebSecurity: false,
-    // baseUrl: "https://qauto.forstudy.space/",
+
     retries: {
       runMode: 3,
     },
@@ -12,8 +12,6 @@ module.exports = defineConfig({
       AUTH_USERNAME: "guest",
       AUTH_PASSWORD: "welcome2qauto",
     },
-
-    video: true,
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },

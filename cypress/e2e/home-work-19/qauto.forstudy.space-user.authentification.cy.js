@@ -42,8 +42,7 @@ describe("Registration set", () => {
   });
 
   it("Registration modal: Correct error on empty name field", () => {
-    cy.get("#signupName").focus();
-    cy.get("#signupLastName").focus();
+    cy.get("#signupName").focus().blur();
     cy.get("div.invalid-feedback")
       .get("p")
       .should("include.text", "Name required")
@@ -52,8 +51,7 @@ describe("Registration set", () => {
   });
 
   it("Registration modal: Correct error on invalid name field", () => {
-    cy.get("#signupName").type("12");
-    cy.get("#signupLastName").focus();
+    cy.get("#signupName").type("12").blur();
     cy.get("div.invalid-feedback")
       .get("p")
       .should("include.text", "Name is invalid")
@@ -62,8 +60,7 @@ describe("Registration set", () => {
   });
 
   it("Registration modal: Correct error on too short name length", () => {
-    cy.get("#signupName").type("q");
-    cy.get("#signupLastName").focus();
+    cy.get("#signupName").type("q").blur();
     cy.get("div.invalid-feedback")
       .should("include.text", "Name has to be from 2 to 20 characters long")
       .should("be.visible");
@@ -71,8 +68,7 @@ describe("Registration set", () => {
   });
 
   it("Registration modal: Correct error on too long name length", () => {
-    cy.get("#signupName").type("qwertyuiopasdfghjklzx");
-    cy.get("#signupLastName").focus();
+    cy.get("#signupName").type("qwertyuiopasdfghjklzx").blur();
     cy.get("div.invalid-feedback")
       .should("include.text", "Name has to be from 2 to 20 characters long")
       .should("be.visible");
@@ -80,8 +76,7 @@ describe("Registration set", () => {
   });
 
   it("Registration modal: Name: Correct red border on error", () => {
-    cy.get("#signupName").focus();
-    cy.get("#signupLastName").focus();
+    cy.get("#signupName").focus().blur();
     cy.get("#signupName.is-invalid").should(
       "have.css",
       "border-color",
@@ -90,24 +85,21 @@ describe("Registration set", () => {
   });
 
   it("Registration modal: Correct error on empty last name field", () => {
-    cy.get("#signupLastName").focus();
-    cy.get("#signupName").focus();
+    cy.get("#signupLastName").focus().blur();
     cy.get("div.invalid-feedback")
       .should("include.text", "Last name required")
       .should("be.visible");
   });
 
   it("Registration modal: Correct error on invalid last name field", () => {
-    cy.get("#signupLastName").type("12");
-    cy.get("#signupName").focus();
+    cy.get("#signupLastName").type("12").blur();
     cy.get("div.invalid-feedback")
       .should("include.text", "Last name is invalid")
       .should("be.visible");
   });
 
   it("Registration modal: Correct error on too short last name length", () => {
-    cy.get("#signupLastName").type("q");
-    cy.get("#signupName").focus();
+    cy.get("#signupLastName").type("q").blur();
     cy.get("div.invalid-feedback")
       .should(
         "include.text",
@@ -117,8 +109,7 @@ describe("Registration set", () => {
   });
 
   it("Registration modal: Correct error on too long last name length", () => {
-    cy.get("#signupLastName").type("qwertyuiopasdfghjklzx");
-    cy.get("#signupName").focus();
+    cy.get("#signupLastName").type("qwertyuiopasdfghjklzx").blur();
     cy.get("div.invalid-feedback")
       .should(
         "include.text",
@@ -128,8 +119,7 @@ describe("Registration set", () => {
   });
 
   it("Registration modal: Last Name: Correct red border on error ", () => {
-    cy.get("#signupLastName").focus();
-    cy.get("#signupName").focus();
+    cy.get("#signupLastName").focus().blur();
     cy.get("#signupLastName.is-invalid").should(
       "have.css",
       "border-color",
@@ -138,8 +128,7 @@ describe("Registration set", () => {
   });
 
   it("Registration modal: Email: Correct red border on error ", () => {
-    cy.get("#signupEmail").focus();
-    cy.get("#signupName").focus();
+    cy.get("#signupEmail").focus().blur();
     cy.get("#signupEmail.is-invalid").should(
       "have.css",
       "border-color",
@@ -148,8 +137,7 @@ describe("Registration set", () => {
   });
 
   it("Registration modal: Correct error on empty email field", () => {
-    cy.get("#signupEmail").focus();
-    cy.get("#signupLastName").focus();
+    cy.get("#signupEmail").focus().blur();
     cy.get("div.invalid-feedback")
       .get("p")
       .should("include.text", "Email required")
@@ -157,8 +145,7 @@ describe("Registration set", () => {
   });
 
   it("Registration modal: Correct error on invalid email field", () => {
-    cy.get("#signupEmail").type("@");
-    cy.get("#signupLastName").focus();
+    cy.get("#signupEmail").type("@").blur();
     cy.get("div.invalid-feedback")
       .get("p")
       .should("include.text", "Email is incorrect")
@@ -166,8 +153,7 @@ describe("Registration set", () => {
   });
 
   it("Registration modal: Correct error on invalid password field", () => {
-    cy.get("#signupPassword").type("123");
-    cy.get("#signupName").focus();
+    cy.get("#signupPassword").type("123").blur();
     cy.get("div.invalid-feedback")
       .should(
         "include.text",
@@ -177,16 +163,14 @@ describe("Registration set", () => {
   });
 
   it("Registration modal: Correct error on empty password field", () => {
-    cy.get("#signupPassword").focus();
-    cy.get("#signupName").focus();
+    cy.get("#signupPassword").focus().blur();
     cy.get("div.invalid-feedback")
       .should("include.text", "Password required")
       .should("be.visible");
   });
 
   it("Registration modal: Password: Correct red border on error ", () => {
-    cy.get("#signupPassword").focus();
-    cy.get("#signupName").focus();
+    cy.get("#signupPassword").focus().blur();
     cy.get("#signupPassword.is-invalid").should(
       "have.css",
       "border-color",
@@ -196,8 +180,7 @@ describe("Registration set", () => {
 
   it("Registration modal: Re enter password: Correct error if passwords don't much", () => {
     cy.get("#signupPassword").type("GmmWseR6**");
-    cy.get("#signupRepeatPassword").type("Gmmwser6**");
-    cy.get("#signupName").focus();
+    cy.get("#signupRepeatPassword").type("Gmmwser6**").blur();
     cy.get("div.invalid-feedback")
       .should("include.text", "Passwords do not match")
       .should("be.visible");
@@ -205,16 +188,14 @@ describe("Registration set", () => {
 
   it("Registration modal: Re enter password: Correct error on empty re-enter password field", () => {
     cy.get("#signupPassword").type("GmmWseR6**");
-    cy.get("#signupRepeatPassword").focus();
-    cy.get("#signupName").focus();
+    cy.get("#signupRepeatPassword").focus().blur();
     cy.get("div.invalid-feedback")
       .should("include.text", "Re-enter password required")
       .should("be.visible");
   });
 
   it("Registration modal: Re enter password: Correct red border on error ", () => {
-    cy.get("#signupRepeatPassword").focus();
-    cy.get("#signupPassword").focus();
+    cy.get("#signupRepeatPassword").focus().blur();
     cy.get("#signupRepeatPassword.is-invalid").should(
       "have.css",
       "border-color",
