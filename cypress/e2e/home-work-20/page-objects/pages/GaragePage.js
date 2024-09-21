@@ -14,6 +14,9 @@ class GaragePage {
   get addFuelExpensesBtn() {
     return cy.get(".car_add-expense");
   }
+  get fuelExpensesHeader() {
+    return cy.get("h1");
+  }
   openAddCarModal() {
     this.addCarButton.click();
     cy.get(".modal-title").should("have.text", "Add a car");

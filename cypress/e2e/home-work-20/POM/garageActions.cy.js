@@ -39,5 +39,6 @@ describe("Add expenses form", () => {
   it("Successful adding expenses", () => {
     GaragePage.openAddFuelExpenseModal();
     AddExpenseForm.addAnExpenseForCar("Audi A6", "1120", "20", "800");
+    GaragePage.fuelExpensesHeader.contains("Fuel expenses");
   });
 });

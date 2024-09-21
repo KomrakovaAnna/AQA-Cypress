@@ -22,9 +22,10 @@ class AddExpenseForm {
   }
   get dateValue() {
     const today = new Date();
+    today.setDate(today.getDate());
     const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, "0"); // Months are 0-based, so we add 1
-    const day = String(today.getDate()).padStart(2, "0"); // Pad with leading zero if needed
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
     return `${day}.${month}.${year}`;
   }
   selectVehicleOption(option) {}
