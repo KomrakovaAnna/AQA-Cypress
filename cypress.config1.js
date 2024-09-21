@@ -9,7 +9,7 @@ module.exports = defineConfig({
       runMode: 3,
     },
     env: {
-      BASE_URL2: "https://qauto2.forstudy.space/",
+      BASE_URL: "https://qauto2.forstudy.space/",
       AUTH_USERNAME: "guest",
       AUTH_PASSWORD: "welcome2qauto",
     },
