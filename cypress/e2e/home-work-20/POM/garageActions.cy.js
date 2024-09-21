@@ -13,8 +13,9 @@ describe("Add car form", () => {
     SignInForm.loginWithCredentials("komrakova.anna@gmail.com", "GmmWseR6**");
     GaragePage.openAddCarModal();
   });
-  it("Successful adding car", () => {
+  it.only("Successful adding car", () => {
     AddCarForm.addCar("Audi", "A6", "10000");
+    GaragePage.lastAddedCarName.should("have.text", "Audi A6");
   });
 
   after(() => {
