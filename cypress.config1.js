@@ -1,6 +1,7 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  reporter: "mochawesome",
   e2e: {
     chromeWebSecurity: false,
 
@@ -8,7 +9,7 @@ module.exports = defineConfig({
       runMode: 3,
     },
     env: {
-      BASE_URL: "https://qauto.forstudy.space/",
+      BASE_URL2: "https://qauto2.forstudy.space/",
       AUTH_USERNAME: "guest",
       AUTH_PASSWORD: "welcome2qauto",
     },

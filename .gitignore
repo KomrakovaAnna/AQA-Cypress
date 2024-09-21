@@ -1,6 +1,7 @@
 .node_modules
 .prettierrc.json
-
+.mochaawesome-report
+.screenshots
 
 
 #Junk
