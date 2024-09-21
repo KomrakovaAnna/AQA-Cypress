@@ -32,10 +32,10 @@ describe("Add expenses form", () => {
     HomePage.open();
     HomePage.openSignInForm();
     SignInForm.loginWithCredentials("komrakova.anna@gmail.com", "GmmWseR6**");
-  });
-  it("Successful adding expenses", () => {
     GaragePage.openAddCarModal();
     AddCarForm.addCar("Audi", "A6", "1000");
+  });
+  it("Successful adding expenses", () => {
     GaragePage.openAddFuelExpenseModal();
     AddExpenseForm.addAnExpenseForCar("Audi A6", "1120", "20", "800");
   });

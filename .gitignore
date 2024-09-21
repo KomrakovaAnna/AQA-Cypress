@@ -1,9 +1,9 @@
 .node_modules
 .prettierrc.json
-.mochaawesome-report
+.mochawesome-report
 .screenshots
 .videos
-
+.home-work-21
 
 #Junk
 .DS_Store
