@@ -1,7 +1,8 @@
 .node_modules
 .prettierrc.json
-
-
+mochawesome-report
+screenshots
+videos
 
 #Junk
 .DS_Store
