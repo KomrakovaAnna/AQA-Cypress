@@ -25,6 +25,7 @@ class HomePage {
     this.signUpButton.click();
     cy.get(".modal-title").should("have.text", "Registration");
   }
+  
 }
 
 export default new HomePage();

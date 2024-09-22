@@ -21,11 +21,18 @@ class GaragePage {
     this.addCarButton.click();
     cy.get(".modal-title").should("have.text", "Add a car");
   }
+  get profileButton() {
+    return cy.get("nav .sidebar_btn").contains("Profile");
+  }
+
   openEditCarModal() {
     this.editCarBtn.click();
   }
   openAddFuelExpenseModal() {
     this.addFuelExpensesBtn.click();
+  }
+  openProfilePage() {
+    this.profileButton.click();
   }
 }
 
