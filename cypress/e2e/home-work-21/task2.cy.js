@@ -11,13 +11,13 @@ describe("Intercept test", () => {
       data: {
         userId: 140609,
         photoFilename: "default-user.png",
-        name: "Polar", // Підміняємо ім'я
-        lastName: "Bear", // Підміняємо прізвище
+        name: "Polar",
+        lastName: "Bear",
       },
     }).as("currentUserProfile");
     HomePage.open();
     HomePage.openSignInForm();
-    SignInForm.loginWithCredentials("komrakova.anna@gmail.com", "GmmWseR6**");
+    SignInForm.loginWithCredentials("komrakova.anna+1@gmail.com", "GmmWseR6**");
     cy.get("h1").should("have.text", "Garage");
     GaragePage.openProfilePage();
     cy.wait("@currentUserProfile").its("response.body.data");

@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("API tests for /api/auth/...", () => {
-  it("Register", () => {
+  it("1 - Register", () => {
     cy.request({
       method: "POST",
       url: "/api/auth/signup/",
@@ -17,7 +17,6 @@ describe("API tests for /api/auth/...", () => {
       expect(response.body.data).to.have.property("userId");
     });
   });
-  after(() => {});
 });
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -40,19 +39,18 @@ describe("API tests for /api/cars/...", () => {
       cy.log(JSON.stringify(cookiesValue));
     });
   });
-  it("Add a car", () => {
+  it("2 - Add a car", () => {
     cy.request({
       method: "POST",
       url: "/api/cars/",
-      timeout: 60000,
       failOnStatusCode: false,
       headers: {
         Cookie: cookiesValue,
       },
       body: {
-        carBrandId: "1",
-        carModelId: "1",
-        mileage: "100",
+        carBrandId: 1,
+        carModelId: 1,
+        mileage: 100,
       },
     }).then((response) => {
       cy.log(JSON.stringify(response.body.data));
@@ -60,14 +58,44 @@ describe("API tests for /api/cars/...", () => {
       //   expect(response.body.data).to.have.property("id");
     });
   });
-  after(() => {});
+  let carId = "";
+  it("3 - Check added car", () => {
+    cy.request({
+      method: "GET",
+      url: "/api/cars/",
+      failOnStatusCode: false,
+      headers: {
+        Cookie: cookiesValue,
+      },
+    }).then((response) => {
+      cy.log(JSON.stringify(response.data));
+      expect(response.status).to.eq(200);
+
+      expect(response.body.data[0]).to.have.property("brand").eq("Audi");
+      carId = response.body.data[0].id;
+      cy.log(JSON.stringify(carId));
+    });
+  });
+
+  it("4 - Delete a car", () => {
+    cy.request({
+      method: "DELETE",
+      url: "/api/cars/" + JSON.stringify(carId),
+      failOnStatusCode: false,
+      headers: {
+        Cookie: cookiesValue,
+      },
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+    });
+  });
 });
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 describe("API tests for /api/users/.. ", () => {
   beforeEach(() => {});
-  it("Login", () => {
+  it("5 - Login", () => {
     cy.request({
       method: "POST",
       url: "/api/auth/signin/",
@@ -81,7 +109,7 @@ describe("API tests for /api/users/.. ", () => {
       expect(response.body.data).to.have.property("userId");
     });
   });
-  it("Delete User", () => {
+  it("6 - Delete User", () => {
     cy.request({
       method: "POST",
       url: "/api/auth/signin/",
