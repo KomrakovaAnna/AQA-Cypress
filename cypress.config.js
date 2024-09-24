@@ -4,7 +4,7 @@ module.exports = defineConfig({
   reporter: "mochawesome",
   e2e: {
     chromeWebSecurity: false,
-    // baseUrl: "https://qauto.forstudy.space/",
+    baseUrl: "https://qauto.forstudy.space/",
     retries: {
       runMode: 3,
     },
