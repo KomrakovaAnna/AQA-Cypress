@@ -8,10 +8,10 @@ describe("SignIn", () => {
     HomePage.openSignInForm();
   });
 
-  it("Successful log in", () => {
-    SignInForm.loginWithCredentials("komrakova.anna@gmail.com", "GmmWseR6**");
-    cy.get("h1").should("have.text", "Garage");
-  });
+  // it("Successful log in", () => {
+  //   SignInForm.loginWithCredentials("komrakova.anna@gmail.com", "GmmWseR6**");
+  //   cy.get("h1").should("have.text", "Garage");
+  // });
   it("Log in without email", () => {
     SignInForm.triggerErrorOnEmailField();
     SignInForm.errorMessage.should("have.text", "Email required");

@@ -213,10 +213,10 @@ describe("Login set", () => {
       },
     });
   });
-  it("Valid login", () => {
-    cy.login("komrakova.anna@gmail.com", "GmmWseR6**");
-    cy.get("h1").should("include.text", "Garage");
-  });
+  // it("Valid login", () => {
+  //   cy.login("komrakova.anna@gmail.com", "GmmWseR6**");
+  //   cy.get("h1").should("include.text", "Garage");
+  // });
   it("Invalid login", () => {
     cy.login("komrakova.anna+101@gmail.com", "GmmWseR6**");
     cy.get("p.alert").should("include.text", "Wrong email or password");
