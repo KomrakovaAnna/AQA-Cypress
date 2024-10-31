@@ -10,9 +10,3 @@ jobs:
       - uses: cypress-io/github-action@v6
         with:
           browser: chrome
-    name: E2E on Chrome
-    steps:
-      - uses: actions/checkout@v4
-      - uses: cypress-io/github-action@v6
-        with:
-          browser: chrome
